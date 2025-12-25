@@ -1,4 +1,10 @@
-module test_patterns(input logic [9:0] x, input logic [9:0] y, input logic vde, input logic pattern_sel, output logic [7:0] red, output logic [7:0] green, output logic [7:0] blue);
+module test_patterns(input logic [9:0] x,
+                     input logic [9:0] y, 
+                     input logic vde, 
+                     input logic pattern_sel, 
+                     output logic [7:0] red, 
+                     output logic [7:0] green, 
+                     output logic [7:0] blue);
 
     logic XOR_bit;
 

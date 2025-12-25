@@ -1,5 +1,17 @@
-module top(input logic clk, input logic reset, input logic pattern_sel, output logic hdmi_clk_p, output logic hdmi_clk_n, output logic [2:0] hdmi_tx_n, output logic [2:0] hdmi_tx_p);
+module top(input logic clk,
+           input logic [3:0] btn, 
+           input logic [15:0] sw, 
+           output logic hdmi_clk_p, 
+           output logic hdmi_clk_n, 
+           output logic [2:0] hdmi_tx_n, 
+           output logic [2:0] hdmi_tx_p);
         
+        logic pattern_sel;
+        assign pattern_sel = sw[0];
+
+        logic reset;
+        assign reset = btn[0];
+
         logic pxl_clk;
         logic pxl_clkx5;
         logic locked;

@@ -1,4 +1,13 @@
-module video_timing(input logic clk, input logic reset, output logic hsync, output logic vsync, output logic vde, output logic [9:0] x, output logic [9:0] y);
+module video_timing(input logic clk, 
+                    input logic reset,
+                    output logic hsync, 
+                    output logic vsync, 
+                    output logic vde, 
+                    output logic [9:0] x, 
+                    output logic [9:0] y,
+                    output logic start_of_frame,
+                    output logic end_of_frame,
+                    output logic end_of_line);
 
     //Pixel Clock h_tot*v_tot*60 = ~25 MHz
 
@@ -47,11 +56,15 @@ module video_timing(input logic clk, input logic reset, output logic hsync, outp
         else begin
             v_curr <= v_curr;
         end
-
     end
+
+    //Output Signals
     assign vde  = (h_curr < h_pixel) && (v_curr < v_pixel);
     assign hsync =  !((h_curr >= 656) && (h_curr < 752));
     assign vsync = !((v_curr >= 490) && (v_curr < 492));
+    assign start_of_frame = (h_curr == 0) && (v_curr == 0);
+    assign end_of_frame = (h_curr == (h_tot -1)) && (v_curr ==  (v_tot -1));
+    assign end_of_line = (h_curr == (h_tot - 1));
     
 
 
