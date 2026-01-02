@@ -52,6 +52,7 @@ module top(input logic clk,
                            .green(base_green), 
                            .blue(base_blue)
                            );
+        
         overlay overlay_layer(.x(x), 
                         .y(y), 
                         .vde(vde), 

@@ -41,7 +41,7 @@ module video_timing(input logic clk,
     end
 
     //Vertical Counter
-    always @(posedge clk or posedge reset) begin
+    always_ff @(posedge clk or posedge reset) begin
         if (reset) begin
             v_curr <= 10'b0;
         end
